@@ -1,0 +1,222 @@
+{% extends 'base.html' %}
+
+
+
+{% block title %}
+    dsm-arquitetura
+{% endblock %}
+
+{% block cabecalho %}
+
+    <section class="hero-wrap" style="background-image: url('/static/images/logo8.jpg');" data-stellar-background-ratio="0.3">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center">
+		  <div class="col-md-7 "></div>
+          <div class="col-md-6 col-lg-5 ftco-animate d-flex align-items-end">
+          	<div class="text">
+	            <h5 class="mb-6"><cite>"O edíficio bom não é aquele que fere a paisagem, mas sim aquele que a torna mais
+					bonita do que era antes dele ser construído."</cite></h5>
+	            <p style="color:rgb(0,25,25);">Franck Lloyd Wright.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock %}
+
+{% block servicos_gerais %}
+
+    <section class="ftco-section ftco-no-pb ftco-no-pt bg-primary">
+      <div class="container">
+        <div class="row d-flex no-gutters">
+          <div class="col-md-3 d-flex align-items-stretch ftco-animate">
+            <div class="media block-6 services services-bg d-block text-center px-4 py-5">
+            	<div class="icon d-flex justify-content-center align-items-center"><span class="flaticon-system"></span></div>
+              <div class="media-body py-md-4">
+                <h3>Gestao de Projeto</h3>
+                <p>Texto aqui.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 d-flex align-items-stretch ftco-animate">
+            <div class="media block-6 services services-bg services-darken d-block text-center px-4 py-5">
+            	<div class="icon d-flex justify-content-center align-items-center"><span class="flaticon-supervised"></span></div>
+              <div class="media-body py-md-4">
+                <h3>Fiscalização</h3>
+                <p>texto aqui</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 d-flex align-items-stretch ftco-animate">
+            <div class="media block-6 services services-bg services-lighten d-block text-center px-4 py-5">
+            	<div class="icon d-flex justify-content-center align-items-center"><span class="flaticon-accounting"></span></div>
+              <div class="media-body py-md-4">
+                <h3>Controlo de Custo</h3>
+                <p>texto aqui</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 d-flex align-items-stretch ftco-animate">
+            <div class="media block-6 services services-bg d-block text-center px-4 py-5">
+            	<div class="icon d-flex justify-content-center align-items-center"><span class="flaticon-blueprint"></span></div>
+              <div class="media-body py-md-4">
+                <h3>Projetos Personalizados</h3>
+                <p>texto aqui.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+{% endblock %}
+
+
+
+{% block projetos %}
+
+    <section class="ftco-section ftco-portfolio">
+    	<div class="row justify-content-center no-gutters">
+        <div class="col-md-12 heading-section text-center ftco-animate mb-5">
+        	<span class="subheading">Projects</span>
+          <h2 class="mb-2">Alguns Projetos...</h2>
+        </div>
+      </div>
+
+    	<div class="container">
+            <div class="row no-gutters">
+
+            </div>
+    	</div>
+    </section>
+
+    {% for projeto in projetos %}
+
+						{% if forloop.counter|divisibleby:2  %}
+						<div class="col-md-12 portfolio-wrap">
+							<div class="row no-gutters align-items-center">
+								<div class="col-md-5 order-md-last img js-fullheight" style="background-image: url({{projeto.imagem_post.url}});">
+
+								</div>
+								<div class="col-md-7">
+									<div class="text pt-5 pr-md-5 ftco-animate">
+										<div class="px-4 px-lg-4">
+											<div class="desc  text-md-right">
+												<div class="top">
+													<span class="subheading">{{projeto.city}}</span>
+													<span class="subheading">{{projeto.data_post|date:'M d, Y'}}</span>
+													<h2 class="mb-4"><a href="#">{{projeto.title}}</a></h2>
+												</div>
+												<div class="absolute">
+													<p>{{projeto.referencia}}</p>
+													<p><a href="{% url 'projeto_detail' projeto.id %}" class="custom-btn">Ver Mais</a></p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						{% elif forloop.counter == 1 %}
+
+						<div class="col-md-12 portfolio-wrap">
+							<div class="row no-gutters align-items-center">
+								<div class="col-md-5 img js-fullheight" style="background-image: url({{projeto.imagem_post.url}});">
+
+								</div>
+								<div class="col-md-7">
+									<div class="text pt-5 pl-0 pl-lg-5 pl-md-4 ftco-animate">
+										<div class="px-4 px-lg-4">
+											<div class="desc">
+												<div class="top">
+												<span class="subheading">{{projeto.city}}</span>
+												<span class="subheading">{{projeto.data_post|date:'M d, Y'}}</span>
+												<h2 class="mb-4"><a href="#">{{projeto.title}}</a></h2>
+												</div>
+												<div class="absolute">
+												<p>{{projeto.referencia}}</p>
+												<p><a href="{% url 'projeto_detail' projeto.id %}" class="custom-btn">Ver Mais</a></p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+						</div>
+
+
+
+						{% else %}
+
+						<div class="col-md-12 portfolio-wrap">
+							<div class="row no-gutters align-items-center">
+								<div class="col-md-5 img js-fullheight" style="background-image: url({{projeto.imagem_post.url}});">
+
+								</div>
+								<div class="col-md-7">
+									<div class="text pt-5 pl-md-5 pl-md-4 ftco-animate">
+										<div class="px-4 px-lg-4">
+											<div class="desc">
+												<div class="top">
+													<span class="subheading">{{projeto.city}}</span>
+													<span class="subheading">{{projeto.data_post|date:'M d, Y'}}</span>
+													<h2 class="mb-4"><a href="#">{{projeto.title}}</a></h2>
+												</div>
+												<div class="absolute">
+													<p>{{projeto.referencia}}</p>
+													<p><a href="{% url 'projeto_detail' projeto.id %}" class="custom-btn">Ver Mais</a></p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						{% endif %}
+
+    {% endfor %}
+{% endblock %}
+
+
+{% block testimony %}
+	{% if testemunhos %}
+
+ <section class="ftco-section testimony-section bg-light">
+      <div class="container">
+        <div class="row justify-content-center mb-5">
+          <div class="col-md-7 text-center heading-section ftco-animate">
+          	<span class="subheading">Testemunhos</span>
+            <h2 class="mb-3">Clientes Felizes</h2>
+          </div>
+        </div>
+        <div class="row ftco-animate">
+          <div class="col-md-12">
+            <div class="carousel-testimony owl-carousel">
+			  {% for t in testemunhos %}
+              <div class="item">
+                <div class="testimony-wrap py-4">
+                  <div class="text">
+                  	<span class="fa fa-quote-left"></span>
+					  <br>
+                    <p class="mb-4">{{ t.testimony }}</p>
+
+                    <div class="d-flex align-items-center">
+                    	<div class="user-img" style="background-image: url({{ t.photo.url }})"></div>
+                    	<div class="pl-3">
+		                    <p class="name">{{ t.name }}</p>
+		                    <span class="position">{{ t.job }}</span>
+		                  </div>
+	                  </div>
+                  </div>
+                </div>
+              </div>
+			  {% endfor %}
+			</div>
+          </div>
+        </div>
+      </div>
+    </section>
+	{% endif %}
+{% endblock %}

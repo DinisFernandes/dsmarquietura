@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+
+
+{% block title %}
+    dsm-arquitetura | {{object.title}}
+{% endblock %}
+
+{% block cabecalho %}
+
+{% endblock %}
+
+
+
+{% block detalhe %}
+<section class="ftco-section">
+      <div class="container">
+        <h1>{{object.title}}</h1>
+        <hr>
+          <div class="row">
+              <div class="col-md-8">
+                    <img src="{{object.imagem_post.url}}" alt="" class="img-fluid">
+              </div>
+              <div class="col-md-4">
+                    <p>{{object.referencia}}</p>
+              </div>
+          </div>
+        <hr>
+        <h1>Galeria</h1>
+        <div class="row">
+          <div class="col-md-8 ftco-animate">
+              {% for pic in todos %}
+                  {% if pic.img %}
+                      <p>{{ pic.description }} </p>
+                      <p>
+                      <img src="{{ pic.img.url }}" alt="" class="img-fluid">
+                      </p>
+                        <br><br>
+                  {% else %}
+                  {% endif %}
+              {%  endfor %}
+         </div> <!-- .col-md-8 -->
+
+          <div class="col-md-4 sidebar ftco-animate">
+            <div class="sidebar-box ftco-animate">
+              <div class="categories">
+                <h3>Caracteristicas</h3>
+                <li><a>Cidade <span>{{object.city}}</span></a></li>
+                <li><a>Freguesia <span>{{object.parish}}</span></a></li>
+                <li><a>Área de Lote <span>{{object.lote}}</span></a></li>
+                <li><a>Área de Implantação <span>{{object.implantation}}</span></a></li>
+                <li><a>Área de Construção <span>{{object.construction}}</span></a></li>
+                <li><a>Garagem <span>{{object.garage}}</span></a></li>
+                <li><a>Quartos <span>{{object.bed}}</span></a></li>
+                <li><a>Wc's <span>{{object.bathroom}}</span></a></li>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section> <!-- .section -->
+
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+
+
+{% block title %}
+    dsm-arquitetura | Contatos
+{% endblock %}
+
+
+{% block contatos %}
+    
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('/static/images/logo8.jpg');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-end">
+          <div class="col-md-9 ftco-animate pb-5">
+          	<p class="breadcrumbs"><span class="mr-2"><a href="{% url 'projeto_list' %}">Home <i class="fa fa-chevron-right"></i></a></span> <span>Contatos <i class="fa fa-chevron-right"></i></span></p>
+            <h1 class="mb-3 bread">Contatos</h1>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+	  <section class="ftco-section contact-section">
+      <div class="container">
+        <div class="row block-9 justify-content-center mb-5">
+          <div class="col-md-8 mb-md-5">
+            <form method="post" action="{% url 'save_form' %}" class="bg-light p-5 contact-form">
+              {% csrf_token %}
+              <div class="form-group">
+                <input type="text" class="form-control" id="name" name="name" placeholder="Seu Nome" required data-error="Digite o seu nome">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" id="email" name="email" placeholder="Seu e-mail" required data-error="Digite o seu e-mail">
+              </div>
+               <div class="form-group">
+                <input type="text" class="form-control" id="telm" name="telm" placeholder="Seu telefone" required data-error="Digite o seu telefone">
+              </div>
+              <div class="form-group">
+                <textarea name="message" id="message" cols="30" rows="7" class="form-control" placeholder="Mensagem" required data-error="Digite uma mensagem"></textarea>
+              </div>
+              <div class="form-group">
+                <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="row d-flex mb-5 contact-info justify-content-center">
+        	<div class="col-md-8">
+        		<div class="row mb-5">
+		          <div class="col-md-4 text-center py-4">
+		          	<div class="icon">
+		          		<span class="fa fa-map"></span>
+		          	</div>
+		            <p><span>Morada:</span> Chafé</p>
+		          </div>
+		          <div class="col-md-4 text-center border-height py-4">
+		          	<div class="icon">
+		          		<span class="fa fa-phone"></span>
+		          	</div>
+		            <p><span>Telm:</span> <a href="tel:00351258371020">968 151 007</a></p>
+		          </div>
+		          <div class="col-md-4 text-center py-4">
+		          	<div class="icon">
+		          		<span class="fa fa-paper-plane"></span>
+		          	</div>
+		            <p><span>Email:</span> <a href="mailto:dsm_arquitetura@sapo.pt">dsm_arquitetura@sapo.pt</a></p>
+		          </div>
+		        </div>
+          </div>
+        </div>
+      </div>
+    </section>	
+
+    {% endblock %}
+
